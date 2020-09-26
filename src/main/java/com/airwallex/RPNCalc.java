@@ -111,17 +111,17 @@ public class RPNCalc {
             return value;
         }
 
-        public static double calc(double data, String op) {
+        private double calc(double data) {
             double res = 0;
-            if (OPERATOR_SQRT.equals(op)) {
+            if (OPERATOR_SQRT.equals(value)) {
                 res = Math.sqrt(data);
             }
             return res;
         }
 
-        public static double calc(double x, double y, String op) {
+        private double calc(double x, double y) {
             double res = 0;
-            switch (op) {
+            switch (value) {
                 case OPERATOR_ADD: {
                     res = y + x;
                     break;
@@ -158,7 +158,7 @@ public class RPNCalc {
                         printErrMsg(ErrCode.ILLEGAL_DIVISOR);
                         return false;
                     }
-                    dataStack.push(calc(dataStack.pop(), dataStack.pop(), value));
+                    dataStack.push(calc(dataStack.pop(), dataStack.pop()));
                     snapShot.add(dataStack);
                     break;
                 }
@@ -171,7 +171,7 @@ public class RPNCalc {
                         printErrMsg(ErrCode.ILLEGAL_ROOT);
                         return false;
                     }
-                    dataStack.push(calc(dataStack.pop(), value));
+                    dataStack.push(calc(dataStack.pop()));
                     snapShot.add(dataStack);
                     break;
                 }
