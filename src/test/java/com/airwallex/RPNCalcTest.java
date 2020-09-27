@@ -36,8 +36,7 @@ public class RPNCalcTest {
         expected.add(new RPNCalc.CalcItem(13, "*"));
         expected.add(new RPNCalc.CalcItem(15, "undo"));
 
-        ArrayList<RPNCalc.CalcItem> actual = new ArrayList<>();
-        RPNCalc.splitStr(str, actual);
+        ArrayList<RPNCalc.CalcItem> actual = RPNCalc.splitStr(str);
 
         assertTrue(checkCalcItems(expected, actual));
     }

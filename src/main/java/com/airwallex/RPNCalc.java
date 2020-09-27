@@ -38,8 +38,7 @@ public class RPNCalc {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            ArrayList<CalcItem> items = new ArrayList<>();
-            splitStr(scanner.nextLine(), items);
+            ArrayList<CalcItem> items = splitStr(scanner.nextLine());
 
             for (CalcItem item : items) {
                 if (!item.handleCalcItem(snapShot)) {
@@ -54,10 +53,11 @@ public class RPNCalc {
         }
     }
 
-    static void splitStr(String raw, ArrayList<CalcItem> items) {
+    static ArrayList<CalcItem> splitStr(String raw) {
+        ArrayList<CalcItem> items = new ArrayList<>();
         String str = raw.trim().toLowerCase();
         if (str.isEmpty()) {
-            return;
+            return items;
         }
         int off = 0;
         int next;
@@ -71,6 +71,7 @@ public class RPNCalc {
         }
         CalcItem item = new CalcItem(off + 1, str.substring(off));
         items.add(item);
+        return items;
     }
 
     static Boolean isNum(String str) {
