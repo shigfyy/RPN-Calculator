@@ -45,27 +45,27 @@ public class RPNCalcTest {
     public void testIsNum() {
         String str = "3.1415926";
         assertTrue(RPNCalc.isNum(str));
-        assertEquals(3.1415926, Double.valueOf(str), 0);
+        assertEquals(3.1415926, Double.parseDouble(str), 0);
 
         str = "000123.000";
         assertTrue(RPNCalc.isNum(str));
-        assertEquals(123.0, Double.valueOf(str), 0);
+        assertEquals(123.0, Double.parseDouble(str), 0);
 
         str = "-123.00";
         assertTrue(RPNCalc.isNum(str));
-        assertEquals(-123.0, Double.valueOf(str), 0);
+        assertEquals(-123.0, Double.parseDouble(str), 0);
 
         str = "+123";
         assertTrue(RPNCalc.isNum(str));
-        assertEquals(123, Double.valueOf(str), 0);
+        assertEquals(123, Double.parseDouble(str), 0);
 
         str = "123.";
         assertTrue(RPNCalc.isNum(str));
-        assertEquals(123, Double.valueOf(str), 0);
+        assertEquals(123, Double.parseDouble(str), 0);
 
         str = "-.123";
         assertTrue(RPNCalc.isNum(str));
-        assertEquals(-0.123, Double.valueOf(str), 0);
+        assertEquals(-0.123, Double.parseDouble(str), 0);
 
         str = "sqrt124";
         assertFalse(RPNCalc.isNum(str));
