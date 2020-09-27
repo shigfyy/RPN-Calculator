@@ -75,7 +75,7 @@ public class RPNCalc {
     }
 
     static Boolean isNum(String str) {
-        return str.matches("-?[0-9]+(.[0-9])?[0-9]*");
+        return str.matches("[+-]?[0-9]+.?[0-9]*") || str.matches("[+-]?[0-9]*.?[0-9]+");
     }
 
     static String toFormatString(Stack<Double> stack) {
