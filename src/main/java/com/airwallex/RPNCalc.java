@@ -6,10 +6,17 @@ import java.util.Stack;
 import java.text.DecimalFormat;
 
 public class RPNCalc {
-    private static final ArrayList<Stack<Double>> snapShot = new ArrayList<>();
-    private static final DecimalFormat decimalFormat = new DecimalFormat("#.##########");
-    private static final String STACK_PRINT_START = "stack:";
+    private ArrayList<Stack<Double>> snapShot;
+    public static final DecimalFormat DECIMAL_FORMAT_TEN = new DecimalFormat("#.##########");
+    public static final String STACK_PRINT_START = "stack:";
 
+    public RPNCalc() {
+        snapShot = new ArrayList<>();
+    }
+
+    public ArrayList<Stack<Double>> getSnapShot() {
+        return snapShot;
+    }
     static ArrayList<CalcItem> splitStr(String raw) {
         ArrayList<CalcItem> items = new ArrayList<>();
         String str = raw.trim().toLowerCase();
@@ -35,12 +42,14 @@ public class RPNCalc {
         StringBuilder sb = new StringBuilder(stack.size() << 3);
         sb.append(STACK_PRINT_START);
         for (Double s : stack) {
-            sb.append(' ').append(decimalFormat.format(s));
+            sb.append(' ').append(DECIMAL_FORMAT_TEN.format(s));
         }
         return sb.toString();
     }
 
     public static void main(String[] args) {
+        RPNCalc rpnCalc = new RPNCalc();
+        ArrayList<Stack<Double>> snapShot = rpnCalc.getSnapShot();
         Scanner scanner = new Scanner(System.in);
         while (true) {
             ArrayList<CalcItem> items = splitStr(scanner.nextLine());
